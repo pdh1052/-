@@ -18,13 +18,21 @@
    <bean class="org.springframework.jdbc.datasource.DriverManagerDataSource" id="dataSource">
       <property name="driverClassName" value="oracle.jdbc.OracleDriver"></property>
       <property name="url" value="jdbc:oracle:thin:@localhost:1521:xe"></property>
-      <property name="username" value="ezen3"></property>
-      <property name="password" value="ezen3"></property>
+      <property name="username" value="dohyun"></property>
+      <property name="password" value="dohyun"></property>
    </bean>
    
    <bean class="org.mybatis.spring.SqlSessionFactoryBean" id="sqlSessionFactory">
       <property ref="dataSource" name="dataSource"></property>
       <property value="classpath:/mybatis-config.xml" name="configLocation"></property>
+      <property value="classpath:mappers/**/*.xml" name="mapperLocations"></property>
+   </bean>
+   
+   <bean destroy-method="clearCache" id="sqlSession" class="org.mybatis.spring.SqlSessionTemplate">
+      <constructor-arg ref="sqlSessionFactory" name="sqlSessionFactory"></constructor-arg>
    </bean>
       
+      
+   	<context:component-scan base-package="kr.co.dao"/>
+	<context:component-scan base-package="kr.co.service"/>
 </beans>

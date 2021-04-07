@@ -9,3 +9,4 @@ CREATE TABLE board (
 )
 
 drop table board
+select *from board
