@@ -1,8 +1,10 @@
 package kr.co.controller;
 
+import java.util.List;
 import javax.inject.Inject;
-
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
@@ -28,6 +30,26 @@ public class BoardController {
 		
 		boardService.insert(vo);
 		
-		return "/board/read/"+vo.getBno();
+		return "redirect:/board/read/"+vo.getBno();
+	}
+	
+	@RequestMapping(value = "/read/{bno}", method = RequestMethod.GET)
+	public String read(@PathVariable("bno")int bno, Model model) {
+		
+		BoardVO vo = boardService.read(bno);
+		
+		model.addAttribute("vo", vo);
+		
+		return "/board/read";
+	}
+	
+	
+	@RequestMapping(value = "/list", method = RequestMethod.GET)
+	public String list(Model model) {
+		
+		List<BoardVO> vo = boardService.list();
+		model.addAttribute("vo", vo);
+		
+		return "/board/list";
 	}
 }

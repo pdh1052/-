@@ -1,5 +1,7 @@
 package kr.co.service;
 
+import java.util.List;
+
 import javax.inject.Inject;
 
 import org.springframework.stereotype.Service;
@@ -17,6 +19,18 @@ public class BoardServiceImpl implements BoardService{
 	public void insert(BoardVO vo) {
 		boardDAO.insert(vo);
 		
+	}
+
+	@Override
+	public BoardVO read(int bno) {
+		
+		return boardDAO.read(bno);
+	}
+
+	@Override
+	public List<BoardVO> list() {
+		// TODO Auto-generated method stub
+		return boardDAO.list();
 	}
 
 }

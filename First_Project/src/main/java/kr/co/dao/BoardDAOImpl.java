@@ -1,5 +1,7 @@
 package kr.co.dao;
 
+import java.util.List;
+
 import javax.inject.Inject;
 
 import org.apache.ibatis.session.SqlSession;
@@ -21,6 +23,18 @@ public class BoardDAOImpl implements BoardDAO{
 		
 		sqlsession.insert(NS+".insert", vo);
 		
+	}
+
+	@Override
+	public BoardVO read(int bno) {
+		
+		return sqlsession.selectOne(NS+".read", bno);
+	}
+
+	@Override
+	public List<BoardVO> list() {
+		// TODO Auto-generated method stub
+		return sqlsession.selectList(NS+".list");
 	}
 
 }
