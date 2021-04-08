@@ -12,4 +12,10 @@ public interface BoardDAO {
 
 	List<BoardVO> list();
 
+	BoardVO updateUI(int bno);
+
+	void update(BoardVO vo);
+
+	void delete(int bno);
+
 }

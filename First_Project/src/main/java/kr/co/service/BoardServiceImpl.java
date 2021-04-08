@@ -33,4 +33,22 @@ public class BoardServiceImpl implements BoardService{
 		return boardDAO.list();
 	}
 
+	@Override
+	public BoardVO updateUI(int bno) {
+		
+		return boardDAO.updateUI(bno);
+	}
+
+	@Override
+	public void update(BoardVO vo) {
+		
+		boardDAO.update(vo);
+	}
+
+	@Override
+	public void delete(int bno) {
+		// TODO Auto-generated method stub
+		boardDAO.delete(bno);
+	}
+
 }

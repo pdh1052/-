@@ -7,7 +7,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>게시물 등록</title>
+<title>${vo.title }</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet"
  href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
@@ -21,32 +21,35 @@
 <body>
 <div class="container">
 	<div class="row">
-		<h1 class="jumbotron">게시물 등록</h1>
+		<h1 class="jumbotron">게시물 수정</h1>
 	</div>
 
 	<div class="row">
-		<form action="/board/insert" method="post">
+		<form action="/board/update" method="post">
+		    <div class="input-group">
+               <input value="${vo.bno}" id="bno" name="bno" class="form-control" readonly type="hidden">
+            </div>
 		
 			<div class="input-group">
 				<span class="input-group-addon" id="title">제목</span>
-				<input name="title" type="text" class="form-control" aria-describedby="basic-addon1">
+				<input name="title" type="text" class="form-control" aria-describedby="basic-addon1" value="${vo.title }">
 			</div><p>
 			
 			<div class="input-group">
 				<span class="input-group-addon" id="writer">작성자</span>
-				<input name="writer" type="text" class="form-control" aria-describedby="basic-addon1">
+				<input name="writer" type="text" class="form-control" aria-describedby="basic-addon1" value="${vo.writer }">
 			</div><p>
 			
 			<div class="input-group">
 				<span class="input-group-addon" id="content">내용</span>
-				<textarea name="content" rows="5" class="form-control" aria-describedby="basic-addon1"></textarea>
+				<textarea name="content" rows="5" class="form-control" aria-describedby="basic-addon1">${vo.content }</textarea>
 			</div><p>
 			
 		</form>
 		
 	<div class="form-group">
-			<button id="insert_btn" type="submit" class="btn btn-primary">등록</button>
-			<button id="list_btn" class="btn btn-info">목록</button>
+			<button id="update_btn" type="submit" class="btn btn-primary">등록</button>
+			<button id="back_btn" class="btn btn-info">뒤로가기</button>
 		</div>
 	</div>
 
@@ -55,14 +58,18 @@
 
 <script type="text/javascript">
 $(document).ready(function(){
-		$("#insert_btn").click(function(){
+		$("#update_btn").click(function(){
 			$("form").submit();
+		});
+		
+		$("#back_btn").click(function(){
+			history.back();
 		});
 	
 });
 
-
 </script>
+
 
 </body>
 </html>

@@ -23,4 +23,18 @@
 	<select id="list" resultType="kr.co.vo.BoardVO">
 		select *from board
 	</select>
+	
+	<select id="updateUI" resultType="kr.co.vo.BoardVO">
+		select *from board where bno = #{bno}
+	</select>
+	
+	<update id="update">
+		update board set
+		writer = #{writer}, title = #{title}, content = #{content},
+		updateDate = SYSDATE WHERE bno = #{bno}
+	</update>
+	
+	<delete id="delete">
+		delete from board where bno = #{bno}
+	</delete>
 </mapper>

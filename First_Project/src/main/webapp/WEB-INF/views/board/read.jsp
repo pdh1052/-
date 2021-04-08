@@ -19,10 +19,17 @@
  src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/3.0.1/handlebars.js"></script>
 </head>
 <body>
+
+	<form action="/board/delete" method="post">
+      <input type="hidden" name="bno" value="${vo.bno}">      
+	</form>
+	
 <div class="container">
 	<div class="row">
 		<h1 class="jumbotron">글 자세히 보기</h1>
 	</div>
+	
+
 	
 	<div class="row">
 		<div class="form-group">
@@ -42,6 +49,33 @@
 	</div>
 	
 	
+	<div class="row">
+		<button id="read_update_btn" class="btn btn-primary">수정</button>
+		<button id="read_delete_btn" class="btn btn-info">삭제</button>
+		<button id="read_list_btn" class="btn btn-primary">목록</button>
+	</div>
+	
 </div>
+
+
+<script type="text/javascript">
+$(document).ready(function(){
+	$("#read_update_btn").click(function(){
+		location.assign("/board/update/${vo.bno}");
+		
+	});
+	
+	$("#read_delete_btn").click(function(){
+		$("form").submit();
+	});
+	
+	$("#read_list_btn").click(function(){
+		location.assign("/board/list");
+		
+	});
+	
+});
+
+</script>
 </body>
 </html>

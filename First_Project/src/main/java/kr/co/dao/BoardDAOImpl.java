@@ -37,4 +37,23 @@ public class BoardDAOImpl implements BoardDAO{
 		return sqlsession.selectList(NS+".list");
 	}
 
+	@Override
+	public BoardVO updateUI(int bno) {
+		// TODO Auto-generated method stub
+		return sqlsession.selectOne(NS+".updateUI", bno);
+	}
+
+	@Override
+	public void update(BoardVO vo) {
+		// TODO Auto-generated method stub
+		
+		sqlsession.update(NS+".update", vo);
+	}
+
+	@Override
+	public void delete(int bno) {
+		// TODO Auto-generated method stub
+		sqlsession.delete(NS+".delete", bno);
+	}
+
 }

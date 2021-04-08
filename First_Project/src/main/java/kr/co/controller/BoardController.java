@@ -7,7 +7,6 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-
 import kr.co.service.BoardService;
 import kr.co.vo.BoardVO;
 
@@ -41,6 +40,32 @@ public class BoardController {
 		model.addAttribute("vo", vo);
 		
 		return "/board/read";
+	}
+	
+	
+	@RequestMapping(value = "/update/{bno}", method = RequestMethod.GET)
+	public String update(@PathVariable("bno")int bno, Model model) {
+		
+		BoardVO vo = boardService.updateUI(bno);
+		model.addAttribute("vo", vo);
+		
+		return "/board/update";
+	}
+	
+	@RequestMapping(value = "/update")
+	public String update(BoardVO vo) {
+		
+		boardService.update(vo);
+		
+		return "redirect:/board/read/"+vo.getBno();
+	}
+	
+	@RequestMapping(value = "/delete", method = RequestMethod.POST)
+	public String delete(int bno) {
+		
+		boardService.delete(bno);
+		
+		return "redirect:/board/list";
 	}
 	
 	

@@ -12,4 +12,10 @@ public interface BoardService {
 
 	List<BoardVO> list();
 
+	BoardVO updateUI(int bno);
+
+	void update(BoardVO vo);
+
+	void delete(int bno);
+
 }
