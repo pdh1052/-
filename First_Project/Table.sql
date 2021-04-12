@@ -8,5 +8,18 @@ CREATE TABLE board (
 	viewCnt NUMBER DEFAULT 0
 )
 
-drop table board
-select *from board
+CREATE TABLE member(
+id varchar2(20) NOT NULL,
+pw varchar2(20) NOT NULL,
+name varchar2(20) NOT NULL,
+gender varchar2(10) NOT NULL,
+birth varchar2(20) NOT NULL,
+email varchar2(30) NOT NULL,
+address varchar2(50) NOT NULL,
+tell varchar2(20) not null,
+primary key(id)
+)
+
+drop table member
+delete table member
+select *from member
