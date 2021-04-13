@@ -21,5 +21,5 @@ primary key(id)
 )
 
 drop table member
-delete table member
 select *from member
+

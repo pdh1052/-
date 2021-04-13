@@ -19,6 +19,18 @@ public class MemberServiceImpl implements MemberService{
 		
 	}
 
+	@Override
+	public MemberVO updateUI(int id) {
+		// TODO Auto-generated method stub
+		return memberDao.updateUI(id);
+	}
+
+	@Override
+	public void update(MemberVO vo) {
+		memberDao.update(vo);
+		
+	}
+
 
 
 }

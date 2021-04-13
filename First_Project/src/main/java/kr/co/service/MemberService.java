@@ -6,6 +6,13 @@ public interface MemberService {
 
 	void insert(MemberVO vo);
 
+	MemberVO updateUI(int id);
+
+	void update(MemberVO vo);
+
+
+
+
 
 
 	

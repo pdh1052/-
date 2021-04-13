@@ -1,7 +1,13 @@
 package kr.co.controller;
 
 import javax.inject.Inject;
+import javax.servlet.http.HttpServletRequest;
+
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
+import org.springframework.validation.annotation.Validated;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
@@ -28,9 +34,21 @@ public class MemberController {
 		
 		memberService.insert(vo);
 		
-		return "/member/insertcp";
+		return "/member/read/"+vo.getId();
 	}
 	
-
+	//회원정보수정UI
+	@RequestMapping(value = "/update/{id}", method = RequestMethod.GET)
+	public String update(@PathVariable("id")int id, Model model) {
+		MemberVO vo = memberService.updateUI(id);
+		model.addAttribute("vo", vo);
+		return "/member/update";
+	}
+	
+	@RequestMapping(value = "/update", method = RequestMethod.POST)
+	public String update(MemberVO vo) {
+		 memberService.update(vo);
+		 return "/member/read/"+vo.getId();
+	}
 	
 }

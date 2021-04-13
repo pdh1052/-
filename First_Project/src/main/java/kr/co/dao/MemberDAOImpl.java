@@ -20,6 +20,18 @@ public class MemberDAOImpl implements MemberDAO{
 		sqlSession.insert(NS+".insert", vo);
 		
 	}
+
+	@Override
+	public MemberVO updateUI(int id) {
+		// TODO Auto-generated method stub
+		return sqlSession.selectOne(NS+".updateUI", id);
+	}
+
+	@Override
+	public void update(MemberVO vo) {
+		sqlSession.update(NS+".update", vo);
+		
+	}
 	
 	
 	

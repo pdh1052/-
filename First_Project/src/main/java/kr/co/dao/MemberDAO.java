@@ -6,6 +6,10 @@ public interface MemberDAO {
 
 	void insert(MemberVO vo);
 
+	MemberVO updateUI(int id);
+
+	void update(MemberVO vo);
+
 	
 
 }

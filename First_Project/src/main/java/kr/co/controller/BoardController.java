@@ -17,13 +17,14 @@ public class BoardController {
 	@Inject
 	private BoardService boardService;
 	
+	//게시글등록UI
 	@RequestMapping(value = "/insert", method = RequestMethod.GET)
 	public String insert() {
 		
 		return "/board/insert";
 	}
 	
-	
+	//게시글등록
 	@RequestMapping(value = "/insert", method = RequestMethod.POST)
 	public String insert(BoardVO vo) {
 		
@@ -32,6 +33,7 @@ public class BoardController {
 		return "redirect:/board/read/"+vo.getBno();
 	}
 	
+	//게시글자세히보기
 	@RequestMapping(value = "/read/{bno}", method = RequestMethod.GET)
 	public String read(@PathVariable("bno")int bno, Model model) {
 		
@@ -42,7 +44,7 @@ public class BoardController {
 		return "/board/read";
 	}
 	
-	
+	//게시글수정UI
 	@RequestMapping(value = "/update/{bno}", method = RequestMethod.GET)
 	public String update(@PathVariable("bno")int bno, Model model) {
 		
@@ -52,6 +54,7 @@ public class BoardController {
 		return "/board/update";
 	}
 	
+	//게시글수정
 	@RequestMapping(value = "/update")
 	public String update(BoardVO vo) {
 		
@@ -60,6 +63,7 @@ public class BoardController {
 		return "redirect:/board/read/"+vo.getBno();
 	}
 	
+	//게시글삭제
 	@RequestMapping(value = "/delete", method = RequestMethod.POST)
 	public String delete(int bno) {
 		
@@ -68,7 +72,7 @@ public class BoardController {
 		return "redirect:/board/list";
 	}
 	
-	
+	//게시글목록
 	@RequestMapping(value = "/list", method = RequestMethod.GET)
 	public String list(Model model) {
 		
